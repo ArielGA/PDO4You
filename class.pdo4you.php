@@ -59,10 +59,8 @@ class PDO4You extends BPDO4You{
 				foreach ($arr as $i => $a) {
 					$delete[] = array("table" => self::$table, "where"=>array("id"=>$i));	
 				}
-			}else{
-				if($this->unlink_arquivo($arr['id'])){
-					$delete[] = array("table" => self::$table, "where"=>array("id"=>$arr['id']));	
-				}
+			}else{	
+				$delete[] = array("table" => self::$table, "where"=>array("id"=>$arr));	
 			}
 			$json_delete = json_encode($delete);
 			return parent::execute('delete:'.$json_delete);
